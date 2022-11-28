@@ -3,7 +3,7 @@
 // - Produits à afficher de manière tripartite Image/nom/description
 //
 //-> Pour ce faire on crée ce fichier .JS nommé "script" selon l'intitulé visible sur le HTML
-//-> Mise en place d'une fonction cadre moteur de page, sans nom & asyncrone, autoapellée, pour ne pas avoir de variables au global et qui va appeler la fonction récupération, puis la fonction affichage, et boucler
+//-> Mise en place d'une fonction cadre moteur de page, sans nom & asyncrone, autoapellée, pour ne pas avoir de variables au global et qui va appeler la fonction récupération, puis la fonction affichage
 //-> Mise en place de la fonction getCanapes pour tracter les produits de l'API, les convertir en Json, les dénomer "canapes", poser un base case error en catch.
 //-> Mise en place de la fonction affichageCanapes pour afficher les canapés
 
