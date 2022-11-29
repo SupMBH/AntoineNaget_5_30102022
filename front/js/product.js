@@ -11,7 +11,7 @@
   const canapeId = getCanapeId();
   const canape = await getCanape(canapeId);
   focaleCanape(canape);
-  constructorProduit(canapeId);  
+  constructeurProduit(canapeId);  
 })()
 
 //-> Mise en place fonction getCanapeId () de récupération de l'Id produit sans local storage, par URL searchParams
@@ -42,7 +42,7 @@ function focaleCanape(canape) {
 
 //-> Mise en place fonction constructorProduit () pour fabriquer la clef produit si l'ordre est valide orderValid (),
 // et la créer et pousser en LocalStorage ou modif QTe si elle existe déjà 
-function constructorProduit (canapeId) {  
+function constructeurProduit (canapeId) {  
   const button = document.getElementById("addToCart")
   button.addEventListener("click", (e) => {    
     const colors = document.getElementById("colors").value
@@ -51,10 +51,10 @@ function constructorProduit (canapeId) {
       key: canapeId + "|" + colors,
       quantity: Number(quantity),
     }
-  orderValid(colors, quantity, nouveauKanap)
+  ordreValidation(colors, quantity, nouveauKanap)
 })
 
-function orderValid(colors, quantity, nouveauKanap) {
+function ordreValidation(colors, quantity, nouveauKanap) {
   if (colors === "") {
     alert("Ne voudiez-vous pas que votre Kanap ait une belle couleur ?")
     return false
