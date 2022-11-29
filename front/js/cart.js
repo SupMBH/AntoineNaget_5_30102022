@@ -18,18 +18,18 @@ function traitementPanier () {
     itemsInLocalStorage = [];
     const positionEmptyCart = document.getElementById("cart__items");
         if (arrayRetraitement === null) {
-        positionEmptyCart.textContent = "Votre panier est vide";
+            positionEmptyCart.textContent = "Votre panier est vide";
         } else {
-        for (itemKey of arrayRetraitement) {retraitement (itemKey) };
-        function retraitement (itemKey) {
-            let ancienneKey = itemKey.key;
-            let casse = ancienneKey.split('|');
-            product= {
-                key: ancienneKey,
-                id: casse[0],
-                color: casse[1],
-                quantity: itemKey.quantity,}
-            itemsInLocalStorage.push(product);} 
+            for (itemKey of arrayRetraitement) {retraitement (itemKey) };
+            function retraitement (itemKey) {
+                let ancienneKey = itemKey.key;
+                let casse = ancienneKey.split('|');
+                product= {
+                    key: ancienneKey,
+                    id: casse[0],
+                    color: casse[1],
+                    quantity: itemKey.quantity,}
+                itemsInLocalStorage.push(product);} 
         }
  
     async function focalePanier() {
@@ -38,7 +38,7 @@ function traitementPanier () {
         if (itemsInLocalStorage === null || itemsInLocalStorage == 0 ) {
         positionEmptyCart.textContent = "Votre panier est vide";
         } else {        
-        for (i = 0; i < itemsInLocalStorage.length; i++) {
+            for (i = 0; i < itemsInLocalStorage.length; i++) {
             const product = await getCanape(itemsInLocalStorage[i].id);
             const totalPriceItem = (product.price *= itemsInLocalStorage[i].quantity);
             cartArray += `
@@ -65,11 +65,11 @@ function traitementPanier () {
         </article>`;}        
         let totalQuantity = 0;
         let totalPrice = 0;
-        for (i = 0; i < itemsInLocalStorage.length; i++) {
-            const article = await getCanape(itemsInLocalStorage[i].id);
-            totalQuantity += parseInt(itemsInLocalStorage[i].quantity);
-            totalPrice += parseInt(article.price * itemsInLocalStorage[i].quantity);
-        }
+            for (i = 0; i < itemsInLocalStorage.length; i++) {
+                const article = await getCanape(itemsInLocalStorage[i].id);
+                totalQuantity += parseInt(itemsInLocalStorage[i].quantity);
+                totalPrice += parseInt(article.price * itemsInLocalStorage[i].quantity);
+            }
         document.getElementById("totalQuantity").innerHTML = totalQuantity;
         document.getElementById("totalPrice").innerHTML = totalPrice;
 

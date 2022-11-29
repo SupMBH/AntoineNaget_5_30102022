@@ -37,7 +37,7 @@ function focaleCanape(canape) {
     titre.textContent = `${canape.name}`;
     prix.textContent = `${canape.price}`;
     description.textContent = `${canape.description}`;
-    for (let couleur of canape.colors) {couleurOption.innerHTML += `<option value="${couleur}">${couleur}</option>`;}
+      for (let couleur of canape.colors) {couleurOption.innerHTML += `<option value="${couleur}">${couleur}</option>`;}
 }
 
 //-> Mise en place fonction constructorProduit () pour fabriquer la clef produit si l'ordre est valide orderValid (),
@@ -85,7 +85,7 @@ function ajoutNouveauKanap(nouveauKanap) {
               kanapDejaPresentStorage.quantity = nouvelleQuantiteDeKanaps              
               localStorage.setItem('cartItems', JSON.stringify(futurKey));              
               animationVente ();
-              return true}
+                return true}
               else{
                 alert("La quantité maximale est déjà atteinte")
                 return true
