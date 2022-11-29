@@ -3,15 +3,13 @@
 // - Produits à afficher de manière tripartite Image/nom/description
 //
 //-> Pour ce faire on crée ce fichier .JS nommé "script" selon l'intitulé visible sur le HTML
-//-> Mise en place d'une fonction cadre moteur de page, sans nom & asyncrone, autoapellée, pour ne pas avoir de variables au global et qui va appeler la fonction récupération, puis la fonction affichage
-//-> Mise en place de la fonction getCanapes pour tracter les produits de l'API, les convertir en Json, les dénomer "canapes", poser un base case error en catch.
-//-> Mise en place de la fonction affichageCanapes pour afficher les canapés
-
+//-> Mise en place d'une fonction cadre moteur de page, sans nom & asyncrone, autoapellée, pour ne pas avoir de variables au global
 (async function() {
   const canapes = await getCanapes();
   for (canape of canapes) {affichageCanapes(canape)}
 })()
 
+//-> Mise en place de la fonction getCanapes pour tracter les produits de l'API, les convertir en Json, les dénomer "canapes", poser un base case error en catch.
 function getCanapes() {
   return fetch("http://localhost:3000/api/products")
   .then(function(canape){return canape.json()})
@@ -19,6 +17,7 @@ function getCanapes() {
     console.log("404 API Inaccessible:" + error);})
 }
 
+//-> Mise en place de la fonction affichageCanapes pour afficher les canapés
 function affichageCanapes(canape) {
   const zoneCanape = document.querySelector("#items");
   zoneCanape.innerHTML += `<a href="./product.html?_id=${canape._id}">

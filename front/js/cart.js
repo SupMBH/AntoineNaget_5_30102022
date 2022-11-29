@@ -6,15 +6,12 @@
 //
 //-> Pour ce faire on crée ce fichier .JS nommé "cart" selon l'intitulé visible sur le HTML 
 //-> Fonction anonyme autoappelée moteur de page qui run traitementPanier() pour gérer le panier, et formulaire () pour contrôler le formulaire et envoyer la commande
-//-> traitementPanier(): Après splitage de la clef, les articles sont identifiés, récupérés par un fetch et bouclés pour les afficher dans la page avec focalePanier ()
-//-> modifQuantité () et suppression article () permettent de supprimer et modifier dynamiquement les QTE d'article
-//-> formulaire () détermine des regex, relève les constantes à écouter selon les regex et permet d'envoyer la commande en cas de conformité en renvoyant à défaut un message err
-
 (async function() {
    traitementPanier ();
    formulaire ();  
 })()
 
+//-> traitementPanier(): Après splitage de la clef, les articles sont identifiés, récupérés par un fetch et bouclés pour les afficher dans la page avec focalePanier ()
 function traitementPanier () {
 
     let arrayRetraitement = JSON.parse(localStorage.getItem("cartItems"));
@@ -98,6 +95,7 @@ function traitementPanier () {
 
     focalePanier();
 
+//-> modifQuantité () et suppression article () permettent de supprimer et modifier dynamiquement les QTE d'article
     function modifQuantite() {
         const quantityInputs = document.querySelectorAll(".itemQuantity");
         quantityInputs.forEach((quantityInput) => {quantityInput.addEventListener("change", (event) => {
@@ -135,6 +133,7 @@ function traitementPanier () {
     }
 }
 
+//-> formulaire () détermine des regex, relève les constantes à écouter selon les regex et permet d'envoyer la commande en cas de conformité en renvoyant à défaut un message err
 function formulaire () {   
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
