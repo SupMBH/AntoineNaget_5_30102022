@@ -39,7 +39,7 @@ function traitementPanier () {
         positionEmptyCart.textContent = "Votre panier est vide";
         } else {        
             for (i = 0; i < itemsInLocalStorage.length; i++) {
-            const product = await getCanape(itemsInLocalStorage[i].id);
+            const product = await recupCanape(itemsInLocalStorage[i].id);
             const totalPriceItem = (product.price *= itemsInLocalStorage[i].quantity);
             cartArray += `
        <article class="cart__item" data-id=${itemsInLocalStorage[i].id}>
@@ -66,7 +66,7 @@ function traitementPanier () {
         let totalQuantity = 0;
         let totalPrice = 0;
             for (i = 0; i < itemsInLocalStorage.length; i++) {
-                const article = await getCanape(itemsInLocalStorage[i].id);
+                const article = await recupCanape(itemsInLocalStorage[i].id);
                 totalQuantity += parseInt(itemsInLocalStorage[i].quantity);
                 totalPrice += parseInt(article.price * itemsInLocalStorage[i].quantity);
             }
@@ -81,7 +81,7 @@ function traitementPanier () {
         }
     }
     }
-    async function getCanape(productId) {return fetch("http://localhost:3000/api/products/" + productId)
+    async function recupCanape(productId) {return fetch("http://localhost:3000/api/products/" + productId)
         .then(function (res) {
             return res.json();
         })
