@@ -25,14 +25,14 @@ function traitementPanier () {
         } else {
         for (itemKey of arrayRetraitement) {retraitement (itemKey) };
         function retraitement (itemKey) {
-        let ancienneKey = itemKey.key;
-        let casse = ancienneKey.split('|');
-        product= {
-            key: ancienneKey,
-            id: casse[0],
-            color: casse[1],
-            quantity: itemKey.quantity,}
-        itemsInLocalStorage.push(product);} 
+            let ancienneKey = itemKey.key;
+            let casse = ancienneKey.split('|');
+            product= {
+                key: ancienneKey,
+                id: casse[0],
+                color: casse[1],
+                quantity: itemKey.quantity,}
+            itemsInLocalStorage.push(product);} 
         }
  
     async function focalePanier() {
