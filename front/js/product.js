@@ -8,19 +8,19 @@
 //-> Pour ce faire on crée ce ficher .JS nommé "product" selon l'intitulé visible sur le HTML 
 //-> Mise en place fonction cadre moteur de page, sans nom & asyncrone, autoapellée
 (async function() {
-  const canapeId = getCanapeId();
-  const canape = await getCanape(canapeId);
+  const canapeId = recupCanapeId();
+  const canape = await recupCanape(canapeId);
   focaleCanape(canape);
   constructeurProduit(canapeId);  
 })()
 
-//-> Mise en place fonction getCanapeId () de récupération de l'Id produit sans local storage, par URL searchParams
-function getCanapeId() {
+//-> Mise en place fonction recupCanapeId () de récupération de l'Id produit sans local storage, par URL searchParams
+function recupCanapeId() {
   return new URL(location.href).searchParams.get("_id")
 }
 
-//-> Mise en place fonction getCanape () pour tirer le produit sélectionné en Id depuis l'Api
-function getCanape(canapeId) {
+//-> Mise en place fonction recupCanape () pour tirer le produit sélectionné en Id depuis l'Api
+function recupCanape(canapeId) {
   return fetch(`http://localhost:3000/api/products/${canapeId}`)
   .then(function(canape){return canape.json()})
   .catch(function(error){document.querySelector(".item").innerHTML = "<h4>Mais où est passé notre joli canapé ?.. Il y a eu un problème réseau :( </h4>";console.log("404 API Inaccessible:" + error);})
@@ -40,7 +40,7 @@ function focaleCanape(canape) {
       for (let couleur of canape.colors) {couleurOption.innerHTML += `<option value="${couleur}">${couleur}</option>`;}
 }
 
-//-> Mise en place fonction constructorProduit () pour fabriquer la clef produit si l'ordre est valide orderValid (),
+//-> Mise en place fonction constructeurProduit () pour fabriquer la clef produit si l'ordre est valide ordreValidation (),
 // et la créer et pousser en LocalStorage ou modif QTe si elle existe déjà 
 function constructeurProduit (canapeId) {  
   const button = document.getElementById("addToCart")
