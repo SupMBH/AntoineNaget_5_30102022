@@ -5,21 +5,21 @@
 //-> Pour ce faire on crée ce fichier .JS nommé "confirmation" selon l'intitulé visible sur le HTML  
 //-> Fonction anonyme moteur de page autoappelée
 (function() {
-  erraseStorage();
-  var clefCommande = commandeGetId (); 
+  effaceStorage();
+  var clefCommande = recupCommandeId (); 
   affichageFinDeCommande (clefCommande);
-  erraseCommande ();
+  effaceCommande ();
   animationCommande ();
 })()
 
-//-> erraseStorage () Clear sur les storages locaux
-function erraseStorage () {
+//-> effaceStorage () Clear sur les storages locaux
+function effaceStorage () {
   sessionStorage.clear();
   localStorage.clear();
 }
 
-//-> commandeGetId () Recupération du numéro de commande passé sur l'adresse de page hors local
-function commandeGetId () {
+//-> recupCommandeId () Recupération du numéro de commande passé sur l'adresse de page hors local
+function recupCommandeId () {
   return new URL(location.href).searchParams.get("orderId")
 }
 
@@ -28,8 +28,8 @@ function affichageFinDeCommande (clefCommande) {
   document.querySelector("#orderId").innerHTML = `<br><br>${clefCommande}<br><br>Toute l'équipe de Kanap vous remercie, et vous souhaite bonne reception de votre commande :)<br>...à bientôt !`;
 }
 
-//-> erraseCommande () Kill de la clef de commande
-function erraseCommande () {
+//-> effaceCommande () Kill de la clef de commande
+function effaceCommande () {
   clefCommande = undefined;
 }
 

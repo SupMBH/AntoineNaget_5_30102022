@@ -9,7 +9,7 @@
   for (canape of canapes) {affichageCanapes(canape)}
 })()
 
-//-> Mise en place de la fonction getCanapes pour tracter les produits de l'API, les convertir en Json, les dénomer "canapes", poser un base case error en catch.
+//-> Mise en place de la fonction recupCanapes pour tracter les produits de l'API, les convertir en Json, les dénomer "canapes", poser un base case error en catch.
 function recupCanapes() {
   return fetch("http://localhost:3000/api/products")
   .then(function(canape){return canape.json()})
