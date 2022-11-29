@@ -216,6 +216,11 @@ function formulaire () {
         regexEmail.test(email.value) == false
     ) {
         alert("Pardon, mais êtes-vous sûr d'avoir bien rempli le formulaire ?");
+    } else if (  
+        itemsInLocalStorage === null || 
+        itemsInLocalStorage == 0 
+    ) {
+        alert("Pardon, mais votre panier est vide !");
     } else {
         let products = [];
         itemsInLocalStorage.forEach((order) => {
